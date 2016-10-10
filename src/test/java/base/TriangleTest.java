@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import exception.TriangleException;
+
 public class TriangleTest {
 
 	@BeforeClass
@@ -27,7 +29,7 @@ public class TriangleTest {
 	}
 
 	@Test
-	public void TestFirstTriangle1() {
+	public void TestTriangle1() throws TriangleException {
 		Triangle t = new Triangle(5,6,7);
 		assertTrue(t.getArea() == Math.pow(216, 0.5));
 		assertTrue(t.getPerimeter() == 18);
@@ -36,7 +38,7 @@ public class TriangleTest {
 		assertTrue(t.getSide3() == 7);
 	}
 	@Test
-	public void TestFirstTriangle2() {
+	public void TestTriangle2() throws TriangleException {
 		Triangle t = new Triangle(3,4,5);
 		assertTrue(t.getArea() == 6);
 		assertTrue(t.getPerimeter() == 12);
@@ -44,6 +46,12 @@ public class TriangleTest {
 		assertTrue(t.getSide2() == 4);
 		assertTrue(t.getSide3() == 5);
 	}
+	
+	@Test(expected = TriangleException.class)
+	public void TestImpossibleTriangle() throws TriangleException {
+		Triangle t = new Triangle(99,100,1);
+	}
+	
 	@Test
 	public void TestFirstTriangle3() {
 		Triangle t = new Triangle();
